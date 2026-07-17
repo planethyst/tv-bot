@@ -26,8 +26,8 @@ async def play(ctx, arg):
         await ctx.send("opening link for 5 minutes!")
         webbrowser.open(arg)
         await asyncio.sleep(10) # so it actually plays the video LOL
-        pyautogui.click(700, 500)
-        await asyncio.sleep(300)
+        pyautogui.click(1049, 613) #Exactr!
+        await asyncio.sleep(300) 
         os.system("taskkill /f /im firefox.exe") #make sure it closes after to prevent overloading the Evil Boy
     else:
         await ctx.send("this is not a youtube link!")
