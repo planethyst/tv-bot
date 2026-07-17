@@ -23,7 +23,7 @@ bot = commands.Bot(command_prefix=prefix, intents=intents)
 async def play(ctx, arg):
     if youtube in arg.lower():
         print(arg)
-        ctx.send("opening link for 5 minutes!")
+        await ctx.send("opening link for 5 minutes!")
         webbrowser.open(arg)
         await asyncio.sleep(10) # so it actually plays the video LOL
         pyautogui.press('space')
