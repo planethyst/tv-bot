@@ -13,7 +13,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 
-youtube = "https://www.youtube.com/watch?v="
+youtube = "https://www.youtube.com/"
 
 prefix = "!"
 bot = commands.Bot(command_prefix=prefix, intents=intents)
@@ -26,7 +26,7 @@ async def play(ctx, arg):
         await ctx.send("opening link for 5 minutes!")
         webbrowser.open(arg)
         await asyncio.sleep(10) # so it actually plays the video LOL
-        pyautogui.press('space')
+        pyautogui.click(500, 500)
         await asyncio.sleep(300)
         os.system("taskkill /f /im firefox.exe") #make sure it closes after to prevent overloading the Evil Boy
     else:
