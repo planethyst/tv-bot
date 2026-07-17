@@ -20,7 +20,7 @@ bot = commands.Bot(command_prefix=prefix, intents=intents)
 
 
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
+@commands.cooldown(1, 150, commands.BucketType.user)
 async def play(ctx, arg):
     if youtube in arg.lower():
         print(arg)
@@ -37,6 +37,6 @@ async def play(ctx, arg):
 @play.error
 async def play_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
-        await ctx.send("you're on cooldown!")
+        await ctx.send("you're on cooldown!" )
 
 bot.run(token=TOKEN)
