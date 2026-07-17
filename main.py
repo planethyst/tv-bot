@@ -19,9 +19,10 @@ prefix = "!"
 bot = commands.Bot(command_prefix=prefix, intents=intents)
 
 
-@bot.command(cooldown=300)
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
 async def play(ctx, arg):
-    if youtube in arg.lower() and ctx.is_on_cooldown == False:
+    if youtube in arg.lower():
         print(arg)
         await ctx.send("opening link for 5 minutes!, you are now on cooldown!")
         webbrowser.open(arg)
@@ -32,5 +33,10 @@ async def play(ctx, arg):
     else:
         await ctx.send("this is not a youtube link!")
         print(arg)
+
+@play.error
+async def play_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        await ctx.send("you're on cooldown!")
 
 bot.run(token=TOKEN)
