@@ -11,7 +11,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 
-youtube = "https://youtube.com"
+youtube = "https://www.youtube.com/watch?v="
 
 prefix = "!"
 bot = commands.Bot(command_prefix=prefix, intents=intents)
@@ -19,9 +19,9 @@ bot = commands.Bot(command_prefix=prefix, intents=intents)
 
 @bot.command()
 async def play(ctx, arg):
-    if youtube in str(arg).strip():
+    if youtube in arg.lower():
         print(arg)
-        await webbrowser.open(arg)
+        webbrowser.open(arg)
     else:
         await ctx.send("this is not a youtube link!")
         print(arg)
