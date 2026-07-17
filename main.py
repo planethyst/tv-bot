@@ -1,6 +1,6 @@
 import discord
 import asyncio
-from os import getenv
+import os
 from discord.ext import commands
 import webbrowser
 from dotenv import load_dotenv
