@@ -19,11 +19,11 @@ prefix = "!"
 bot = commands.Bot(command_prefix=prefix, intents=intents)
 
 
-@bot.command()
+@bot.command(cooldown=300)
 async def play(ctx, arg):
-    if youtube in arg.lower():
+    if youtube in arg.lower() and ctx.is_on_cooldown == False:
         print(arg)
-        await ctx.send("opening link for 5 minutes!")
+        await ctx.send("opening link for 5 minutes!, you are now on cooldown!")
         webbrowser.open(arg)
         await asyncio.sleep(10) # so it actually plays the video LOL
         pyautogui.click(1049, 613) #Exactr!
