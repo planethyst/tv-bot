@@ -14,6 +14,7 @@ intents.message_content = True
 
 
 youtube = "https://www.youtube.com/"
+youtube2 = "https://www.youtu.be/"
 
 prefix = "!"
 bot = commands.Bot(command_prefix=prefix, intents=intents)
@@ -22,7 +23,7 @@ bot = commands.Bot(command_prefix=prefix, intents=intents)
 @bot.command()
 @commands.cooldown(1, 150, commands.BucketType.user)
 async def play(ctx, arg):
-    if youtube in arg.lower():
+    if youtube or youtube2 in arg.lower():
         print(arg)
         await ctx.send("opening link for 5 minutes!, you are now on cooldown!")
         webbrowser.open(arg)
